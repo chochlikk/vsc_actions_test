@@ -55,6 +55,7 @@ jobs:
       - name: Testujemy zmienne input
         run: |
           echo "Wybrałeś klienta: $KLIENT"
-          echo "Podane imię i nazwisko: ${{ inputs.nazwa_operatora }}"
+          echo "Podane imię i nazwisko: $OPERATOR"
         env:
           KLIENT: ${{ inputs.wybor_klienta }}
+          OPERATOR: ${{ inputs.nazwa_operatora }}
