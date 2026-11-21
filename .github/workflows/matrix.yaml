@@ -21,6 +21,10 @@ jobs:
         include:
           - os: ubuntu-latest # Dodatkowa kombinacja, która nie wynika z list powyżej
             python-version: "3.8"
+            eksperymentalna: true # Na Ubuntu 26.04 nie ma Pythona 3.8
+          - os: ubuntu-latest # Na Ubuntu 26.04 nie ma Pythona 3.9
+            python-version: "3.9"
+            eksperymentalna: true
           - python-version: "3.1" # Dodatkowe pole dla istniejących kombinacji z Pythonem 3.1
             eksperymentalna: true
         exclude:
