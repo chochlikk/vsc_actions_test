@@ -7,7 +7,7 @@ jobs:
   pobieranie:
     runs-on: ubuntu-latest
     env:
-      NFT_URL: https://www.netfilter.org/projects/nftables/files/nftables-1.0.6.1.tar.xz
+      NFT_URL: https://www.netfilter.org/projects/nftables/files/nftables-1.1.7.tar.xz
       NFT_DIR: downloads
       NFT_KEY_FILE: downloads/nftables.url
     steps:
