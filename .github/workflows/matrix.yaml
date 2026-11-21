@@ -4,10 +4,14 @@ on:
   push:
     branches:
       - main # Przepływ uruchamiany przy dodaniu punktu kontrolnego na gałąź "main"
+    paths:
+      - ".github/workflows/matrix.yaml" # ...ale tylko wtedy, gdy zmienił się ten plik
+  workflow_dispatch: # Możliwość uruchomienia ręcznego
 
 jobs:
   test:
     runs-on: ${{ matrix.os }} # Uruchom zadanie na systemie zdefiniowanym w macierzy matrix
+    continue-on-error: ${{ matrix.eksperymentalna == true }} # Błąd wersji eksperymentalnej nie psuje przebiegu
     strategy:
       fail-fast: false # Wszystkie zadania z macierzy wykonają się do końca, nawet jeśli inne zakończą się niepowodzeniem
       max-parallel: 3 # Najwyżej 3 zadania z macierzy wykonywane równocześnie
@@ -17,6 +21,8 @@ jobs:
         include:
           - os: ubuntu-latest # Dodatkowa kombinacja, która nie wynika z list powyżej
             python-version: "3.8"
+          - python-version: "3.1" # Dodatkowe pole dla istniejących kombinacji z Pythonem 3.1
+            eksperymentalna: true
         exclude:
           - os: windows-latest # Wykluczenie kombinacji Windows z Pythonem 3.9
             python-version: "3.9"
